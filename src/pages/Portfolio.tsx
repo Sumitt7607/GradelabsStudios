@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Play, Film, Camera, ShoppingBag } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import VideoCard from "@/components/VideoCard";
 
 type Cat = "all" | "ecommerce" | "cinematic" | "short-form";
 
@@ -110,41 +111,15 @@ const Portfolio = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.5, delay: i * 0.04 }}
-                  className="group cursor-pointer"
                 >
-                  {/* Visual placeholder */}
-                  <div className={`relative aspect-[4/5] bg-gradient-to-br ${p.tone} overflow-hidden rounded-[var(--radius)] mb-4 border border-border`}>
-                    {p.video ? (
-                      <video
-                        src={p.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center opacity-40">
-                        <Film className="h-12 w-12" strokeWidth={1.2} />
-                      </div>
-                    )}
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-foreground/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                      <div>
-                        <p className="text-sm text-background/80 leading-relaxed mb-3">{p.desc}</p>
-                        <div className="inline-flex items-center gap-2 text-background text-sm">
-                          View project <ArrowUpRight className="h-4 w-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-1">{filters.find(f => f.id === p.cat)?.label}</p>
-                      <h3 className="font-serif-display text-xl transition-all">{p.title}</h3>
-                    </div>
-                    <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors mt-1" />
-                  </div>
+                  <VideoCard 
+                    video={p.video}
+                    title={p.title}
+                    subtitle={filters.find(f => f.id === p.cat)?.label || ""}
+                    desc={p.desc}
+                    tone={p.tone}
+                    aspectRatio="aspect-[4/5]"
+                  />
                 </motion.div>
               ))}
             </AnimatePresence>

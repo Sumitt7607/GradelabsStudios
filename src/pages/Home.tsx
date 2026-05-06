@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Film, Camera, ShoppingBag, Palette, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import Reveal from "@/components/Reveal";
+import VideoCard from "@/components/VideoCard";
 
 const services = [
   { icon: Camera, num: "01", title: "Cinematography & Production", desc: "High-performance visuals start behind the camera. We offer dedicated cinematography services ranging from dynamic commercial product shoots to expansive real estate marketing reels." },
@@ -174,33 +175,11 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {work.map((w, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <Link to="/portfolio" className="group block">
-                  <div className="aspect-[3/4] surface-soft rounded-[var(--radius)] overflow-hidden relative mb-4 border border-border">
-                    {w.video ? (
-                      <video
-                        src={w.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    ) : (
-                      <>
-                        <div className={`absolute inset-0 bg-gradient-to-br ${
-                          i === 0 ? "from-zinc-700 to-zinc-900" :
-                          i === 1 ? "from-amber-900/40 to-zinc-900" :
-                          "from-zinc-800 to-black"
-                        } group-hover:scale-105 transition-transform duration-700`} />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <Film className="h-10 w-10 text-foreground/30" strokeWidth={1.2} />
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">{w.tag}</p>
-                  <h3 className="font-serif-display text-2xl transition-all">{w.title}</h3>
-                </Link>
+                <VideoCard 
+                  video={w.video}
+                  title={w.title}
+                  subtitle={w.tag}
+                />
               </Reveal>
             ))}
           </div>
