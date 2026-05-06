@@ -30,6 +30,7 @@ const work = [
 
 const Home = () => {
   const [tIndex, setTIndex] = useState(0);
+
   useEffect(() => {
     const id = setInterval(() => setTIndex((i) => (i + 1) % testimonials.length), 5500);
     return () => clearInterval(id);
@@ -113,7 +114,7 @@ const Home = () => {
         </div>
         <div className="relative overflow-hidden">
           <div className="flex marquee gap-16 whitespace-nowrap">
-            {[..."NORTHWIND·LUMERA·AETHERWAVE·HILLTOP·OBSIDIAN·HELIX·KINETIC·VANTAGE·NORTHWIND·LUMERA·AETHERWAVE·HILLTOP·OBSIDIAN·HELIX·KINETIC·VANTAGE".split("·")].map((b, i) => (
+            {[..."Victory Achiever·Darjeeling View Lodge·HILLTOP·OBSIDIAN·HELIX·KINETIC·VANTAGE·NORTHWIND·LUMERA·AETHERWAVE·HILLTOP·OBSIDIAN·HELIX·KINETIC·VANTAGE".split("·")].map((b, i) => (
               <span key={i} className="font-serif-display text-2xl md:text-3xl text-muted-foreground/60">{b}</span>
             ))}
           </div>
@@ -175,7 +176,7 @@ const Home = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {work.map((w, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <Link to="/portfolio" className="group block">
+                <div className="group block">
                   <div className="aspect-[3/4] surface-soft rounded-[var(--radius)] overflow-hidden relative mb-4 border border-border">
                     {w.video ? (
                       <AutoVideo src={w.video} />
@@ -194,7 +195,7 @@ const Home = () => {
                   </div>
                   <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">{w.tag}</p>
                   <h3 className="font-serif-display text-2xl transition-all">{w.title}</h3>
-                </Link>
+                </div>
               </Reveal>
             ))}
           </div>

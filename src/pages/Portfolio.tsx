@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Play, Film, Camera, ShoppingBag } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import AutoVideo from "@/components/AutoVideo";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 type Cat = "all" | "ecommerce" | "cinematic" | "short-form";
 
@@ -61,6 +62,7 @@ const filters: { id: Cat; label: string }[] = [
 
 const Portfolio = () => {
   const [cat, setCat] = useState<Cat>("all");
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const filtered = cat === "all" ? projects : projects.filter((p) => p.cat === cat);
 
   return (
@@ -112,6 +114,11 @@ const Portfolio = () => {
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.5, delay: i * 0.04 }}
                   className="group cursor-pointer"
+                  onClick={() => {
+                    if (window.innerWidth >= 1024 && p.video) {
+                      setSelectedVideo(p.video);
+                    }
+                  }}
                 >
                   {/* Visual placeholder */}
                   <div className={`relative aspect-[4/5] bg-gradient-to-br ${p.tone} overflow-hidden rounded-[var(--radius)] mb-4 border border-border`}>
@@ -127,7 +134,7 @@ const Portfolio = () => {
                       <div>
                         <p className="text-sm text-background/80 leading-relaxed mb-3">{p.desc}</p>
                         <div className="inline-flex items-center gap-2 text-background text-sm">
-                          View project <ArrowUpRight className="h-4 w-4" />
+                          {window.innerWidth >= 1024 ? "Watch video" : "View project"} <ArrowUpRight className="h-4 w-4" />
                         </div>
                       </div>
                     </div>
@@ -144,6 +151,19 @@ const Portfolio = () => {
             </AnimatePresence>
           </motion.div>
         </div>
+
+        <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
+          <DialogContent className="max-w-4xl p-0 bg-black border-none overflow-hidden aspect-video">
+            {selectedVideo && (
+              <video 
+                src={selectedVideo} 
+                controls 
+                autoPlay 
+                className="w-full h-full object-contain"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
       </section>
 
 
