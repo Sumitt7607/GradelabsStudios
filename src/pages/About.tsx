@@ -64,22 +64,44 @@ const About = () => {
       </section>
 
       {/* FOUNDER */}
-      <section className="py-16 md:py-24 surface-soft">
-        <div className="container">
-          <Reveal>
-            <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-center">
-              <div className="aspect-[4/5] max-w-[240px] md:max-w-none bg-gradient-to-br from-zinc-700 to-zinc-900 rounded-[var(--radius)] border border-border" />
-              <div>
-                <p className="eyebrow mb-5 md:mb-6">Founder & Director</p>
-                <h3 className="font-serif-display text-3xl md:text-6xl leading-tight mb-5 md:mb-6">Ayush Mahato</h3>
-                <p className="text-muted-foreground leading-relaxed text-sm md:text-lg max-w-xl">
-                  GradeLab Studios was built on a foundation of dual expertise: high-performance cinematography and strategic marketplace growth. Led by Ayush Mahato, the studio operates on the belief that a premium aesthetic must be backed by measurable performance. From executing advanced post-production and DaVinci Resolve color grading for commercial shoots, to structuring high-converting SEO strategies for Amazon and global DTC brands, Ayush ensures that every project is crafted to elevate the brand and dominate the digital storefront.
-                </p>
-              </div>
-            </div>
-          </Reveal>
+<section className="py-16 md:py-24 surface-soft">
+  <div className="container">
+    <Reveal>
+      <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-12 items-center">
+        
+        {/* Founder Image */}
+        <div className="aspect-[4/5] max-w-[240px] md:max-w-none overflow-hidden rounded-[var(--radius)] border border-border">
+          <img
+            src="/GLS.png"
+            alt="Ayush Mahato"
+            className="w-full h-full object-cover"
+          />
         </div>
-      </section>
+
+        {/* Founder Content */}
+        <div>
+          <p className="eyebrow mb-5 md:mb-6">Founder & Director</p>
+
+          <h3 className="font-serif-display text-3xl md:text-6xl leading-tight mb-5 md:mb-6">
+            Ayush Mahato
+          </h3>
+
+          <p className="text-muted-foreground leading-relaxed text-sm md:text-lg max-w-xl">
+            GradeLab Studios was built on a foundation of dual expertise:
+            high-performance cinematography and strategic marketplace growth.
+            Led by Ayush Mahato, the studio operates on the belief that a
+            premium aesthetic must be backed by measurable performance. From
+            executing advanced post-production and DaVinci Resolve color grading
+            for commercial shoots, to structuring high-converting SEO strategies
+            for Amazon and global DTC brands, Ayush ensures that every project
+            is crafted to elevate the brand and dominate the digital storefront.
+          </p>
+        </div>
+
+      </div>
+    </Reveal>
+  </div>
+</section>
 
       {/* TIMELINE */}
       {/* <section className="py-32">
