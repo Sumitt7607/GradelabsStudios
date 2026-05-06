@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Film, Camera, ShoppingBag, Palette, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import Reveal from "@/components/Reveal";
+import AutoVideo from "@/components/AutoVideo";
 
 const services = [
   { icon: Camera, num: "01", title: "Cinematography & Production", desc: "High-performance visuals start behind the camera. We offer dedicated cinematography services ranging from dynamic commercial product shoots to expansive real estate marketing reels." },
@@ -177,14 +178,7 @@ const Home = () => {
                 <Link to="/portfolio" className="group block">
                   <div className="aspect-[3/4] surface-soft rounded-[var(--radius)] overflow-hidden relative mb-4 border border-border">
                     {w.video ? (
-                      <video
-                        src={w.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                      <AutoVideo src={w.video} />
                     ) : (
                       <>
                         <div className={`absolute inset-0 bg-gradient-to-br ${

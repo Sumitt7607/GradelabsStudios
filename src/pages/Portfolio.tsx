@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Play, Film, Camera, ShoppingBag } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import AutoVideo from "@/components/AutoVideo";
 
 type Cat = "all" | "ecommerce" | "cinematic" | "short-form";
 
@@ -115,14 +116,7 @@ const Portfolio = () => {
                   {/* Visual placeholder */}
                   <div className={`relative aspect-[4/5] bg-gradient-to-br ${p.tone} overflow-hidden rounded-[var(--radius)] mb-4 border border-border`}>
                     {p.video ? (
-                      <video
-                        src={p.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                      <AutoVideo src={p.video} />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center opacity-40">
                         <Film className="h-12 w-12" strokeWidth={1.2} />
