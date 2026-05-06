@@ -48,20 +48,24 @@ export default function AutoVideo({ src, className, activeClassName }: AutoVideo
   }, []);
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      loop
-      muted
-      playsInline
-      className={cn(
-        "absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)]",
-        "opacity-40 grayscale-[0.4] brightness-[0.7] scale-100", // Initial "dark/muted" state
-        "md:group-hover:opacity-100 md:group-hover:grayscale-0 md:group-hover:brightness-100 md:group-hover:scale-105", // Desktop hover
-        isCentered && "opacity-100 grayscale-0 brightness-100 scale-[1.03]", // Mobile/Scroll center focus
-        isCentered && activeClassName,
-        className
-      )}
-    />
+    <div className="absolute inset-0 bg-zinc-900/40">
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className={cn(
+          "absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none",
+          "opacity-50 scale-100", // Slightly higher base opacity
+          "md:group-hover:opacity-100 md:group-hover:scale-105", // Hover effect
+          isCentered && "opacity-100 scale-[1.03]", // Active state
+          isCentered && activeClassName,
+          className
+        )}
+      />
+    </div>
   );
 }
